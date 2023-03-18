@@ -1,0 +1,19 @@
+{% extends 'website/base.html' %}
+{% load static %}
+
+{% block title %}Log In {% endblock %}
+
+{% block content %}
+<section id="login">
+  <div class="login-field">
+    <h1 class="login-title">Log In</h1>
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button class="submit-button btn btn-outline-danger" type="submit">Log In</button>
+    </form>
+    <p class="register-link"> Dont have an account? <a href="{% url 'signup' %}">SignUp.</a></p>
+  </div>
+</section>
+
+{% endblock %}

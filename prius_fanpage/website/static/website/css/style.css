@@ -1,0 +1,137 @@
+h1, h2, h3 {
+font-family: 'Barlow Condensed', sans-serif;
+font-weight: 700;
+color: #262626;
+}
+
+.navbar {
+margin-left: 50%;
+}
+
+.nav-link {
+color: #850000;
+font-weight: 700;
+margin-right: 7px;
+font-size: 1.5vw;
+}
+
+a {
+color: #262626;
+}
+
+.title-subheading{
+color: white;
+text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+}
+.navbar {
+position: absolute;
+}
+
+.top_left {
+position: absolute;
+top: 50px;
+left: 16px;
+width: 60%;
+}
+
+.title_img_container {
+position: relative;
+padding: 0 0 50px 0;
+}
+
+.title-image {
+width: 100%;
+height: auto;
+}
+
+features-section-title {
+font-size: 5vw;
+}
+
+.gas-pump-img {
+width: 50%;
+height: 50%;
+}
+
+.wrench-img {
+width: 50%;
+height: 50%;
+}
+
+.jokes-img {
+width: 50%;
+height: 50%;
+}
+
+#features {
+text-align: center;
+}
+
+.feature-title {
+color: #850000;
+font-size: 3.5rem;
+}
+.features-icons {
+padding-top: 70px;
+}
+
+
+.copyright {
+text-align: center;
+}
+
+.fa-circle {
+color: #850000;
+}
+
+.login-field {
+padding: 100px 0 500px 50px;
+}
+
+.submit-button {
+margin: 10px 0 40px 0;
+}
+
+.login-title {
+margin: 0 0 20px 0;
+}
+
+.register-link {
+font-size: 1vw;
+}
+
+.jokes-container {
+padding: 70px 0 50px 30px;
+}
+
+.office-video {
+padding: 50px 0 50px 0;
+}
+
+#timer {
+text-align: center;
+padding-bottom: 70px;
+}
+.timer-heading {
+padding: 100px 0 50px 0;
+}
+
+.btn-outline-danger {
+color: #850000;
+border-color: #850000
+font-weight: 600;
+}
+
+.btn-outline-danger:hover {
+background-color: #850000;
+border-color: #850000;
+}
+
+.timer-txt {
+font-size: 2vw;
+}
+
+.digit {
+font-size: 3vw;
+}
+
