@@ -9,21 +9,21 @@
     <div class="title_img_container">
         <img class="title-image" src="{% static 'website/img/title-img.jpg' %}">
         <div class="container-fluid top_left">
-        <h1 style="font-size: 6vw;">Welcome to he Fanpage!</h1>
-        <h2 class="title-subheading" style="font-size: 3vw;">Share the love for the Prius</h2>
+            <h1 style="font-size: 6vw;">Welcome to he Fanpage!</h1>
+            <h2 class="title-subheading" style="font-size: 3vw;">Share the love for the Prius</h2>
         </div>
     </div>
 </section>
 <!--features-->
 <section id="features">
 
-        <h1 class="features-section-title">Why we love it?</h1>
+    <h1 class="features-section-title">Why we love it?</h1>
 
-        <div class="features-icons row container-fluid">
+    <div class="features-icons row container-fluid">
         <div class="col-lg-4">
-             <img class="gas-pump-img" src="{% static 'website/img/gas_pump.jpg' %}">
-             <h3 style="font-size: 3vw;" class="feature-title">Great gas mileage.</h3>
-             <p>It's a hybrid that goes great with LPG.</p>
+            <img class="gas-pump-img" src="{% static 'website/img/gas_pump.jpg' %}">
+            <h3 style="font-size: 3vw;" class="feature-title">Great gas mileage.</h3>
+            <p>It's a hybrid that goes great with LPG.</p>
         </div>
         <div class="col-lg-4">
             <img class="wrench-img" src="{% static 'website/img/wrench.jpg' %}">
@@ -33,15 +33,20 @@
         <div class="col-lg-4">
             <img class="jokes-img" src="{% static 'website/img/jokes.png' %}">
             <h3 style="font-size: 3vw;" class="feature-title">Plenty of jokes.</h3>
-            <p><a href="{% url 'login' %}"> Log in</a> and visit the Notable Scenes page.</p>
+            {% if user.is_authenticated %}
+            <p>Visit the <a href="{% url 'jokes' %}"> Jokes</a> page.</p>
+            {% else %}
+            <p><a href="{% url 'login' %}"> Log in</a> and visit the <a href="{% url 'jokes' %}"> Jokes</a> page.</p>
+            {% endif %}
         </div>
-        </div>
+    </div>
 </section>
 
 <section id="timer">
-<div class="timer-container">
-       <h1 class="timer-heading">The <em>Prius</em>  is also fast! <br> This is how long it takes to reach 100kmh: <br></h1>
+    <div class="timer-container">
+        <h1 class="timer-heading">The <em>Prius</em>  is also <span style="color: #850000">fast!</span> <br> This is how long it takes to reach <span style="color: #850000"> 100kmh:</span> <br></h1>
         <div id="time">
+            <img class="racing-prius-img" src="{% static 'website/img/racing-prius.png' %}">
             <h3>
                 <span class="timer-txt">Seconds</span>
                 <span class="digit" id="sec">
@@ -53,15 +58,55 @@
         </div>
         <div id="buttons">
             <button class="btn btn-outline-danger" id="start">
-              Start</button>
+                Start</button>
             <button class="btn btn-outline-danger" id="stop">
-              Stop</button>
+                Stop</button>
             <button class="btn btn-outline-danger" id="reset">
-              Reset</button>
+                Reset</button>
         </div>
     </div>
 
     <script src="{% static 'website/js/script.js' %}"></script>
+</section>
+
+
+
+<section id="poll">
+    <div class="poll-container">
+
+        <h2> Poll  </h2>
+        {% if user.is_authenticated %}
+        {% for question in questions %}
+        <form action="{% url 'vote' question.id %}" method="post">
+            {% csrf_token %}
+            <fieldset>
+                <legend><h1>{{ question.question_text }}</h1></legend>
+                {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+                {% for choice in question.choice_set.all %}
+                <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
+                <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
+                {% endfor %}
+            </fieldset>
+            <input type="submit" value="Vote">
+        </form>
+        {% endfor %}
+        {% else %}
+
+        {% for question in questions %}
+        <h3> {{ question.question_text}} </h3>
+        <p><a href="{% url 'login' %}"> Log in</a> to participate in a Poll</p>
+
+        {% endfor %}
+        {% endif %}
+    </div>
+</section>
+
+<section id="counter-promo">
+    <div class="counter-promo-container">
+        <h1 ><a class="counter-promo-title" href="{% url 'counter' %}">Prius Counter</a></h1>
+        <h3>Try out this road game</h3>
+        <h3>And find out how many can you spot on the road.</h3>
+    </div>
 </section>
 
 

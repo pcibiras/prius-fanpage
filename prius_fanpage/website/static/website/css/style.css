@@ -4,6 +4,12 @@ font-weight: 700;
 color: #262626;
 }
 
+p {
+font-family: 'Barlow Condensed', sans-serif;
+font-weight: 700;
+font-size: 1.4vw;
+}
+
 .navbar {
 margin-left: 50%;
 }
@@ -16,7 +22,7 @@ font-size: 1.5vw;
 }
 
 a {
-color: #262626;
+color: #850000;
 }
 
 .title-subheading{
@@ -49,18 +55,23 @@ font-size: 5vw;
 }
 
 .gas-pump-img {
-width: 50%;
-height: 50%;
+width: 40%;
+height: 40%;
 }
 
 .wrench-img {
-width: 50%;
-height: 50%;
+width: 40%;
+height: 40%;
 }
 
 .jokes-img {
-width: 50%;
-height: 50%;
+width: 40%;
+height: 40%;
+}
+
+.racing-prius-img {
+width: 40%;
+height: 40%;
 }
 
 #features {
@@ -74,7 +85,6 @@ font-size: 3.5rem;
 .features-icons {
 padding-top: 70px;
 }
-
 
 .copyright {
 text-align: center;
@@ -104,16 +114,12 @@ font-size: 1vw;
 padding: 70px 0 50px 30px;
 }
 
-.office-video {
-padding: 50px 0 50px 0;
-}
-
 #timer {
 text-align: center;
-padding-bottom: 70px;
+padding-bottom: 150px;
 }
 .timer-heading {
-padding: 100px 0 50px 0;
+padding: 100px 0 0 0;
 }
 
 .btn-outline-danger {
@@ -135,3 +141,41 @@ font-size: 2vw;
 font-size: 3vw;
 }
 
+.video-container {
+padding-bottom: 70px;
+}
+
+.counter-promo-container {
+text-align: center;
+padding-bottom: 150px;
+}
+
+.counter-promo-title {
+color: #850000;
+}
+
+.counter-container {
+padding: 70px 0 50px 30px;
+position: relative;
+}
+
+.convertible-img {
+position: absolute;
+margin: 0 0 0 50%;
+}
+
+.counter-title {
+padding-bottom: 50px;
+}
+
+.poll-container {
+padding: 70px 0 50px 30px;
+}
+
+.result-container {
+padding: 70px 0 50px 30px;
+}
+
+.result-title {
+padding-bottom: 30px;
+}

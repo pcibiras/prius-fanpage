@@ -1,0 +1,22 @@
+{% extends 'website/base.html' %}
+{% load static %}
+
+{% block title %}Poll Result{% endblock %}
+
+{% block content %}
+
+<div class="result-container">
+    <div class="result-title">
+        <h1> Thank you for answering!</h1>
+        <h3> This is the result:</h3>
+    </div>
+    <p>{{ question.question_text }}</p>
+    <ul>
+        {% for choice in question.choice_set.all %}
+        <li>{{ choice.choice_text }}</li>
+
+{% endfor %}
+
+</ul>
+</div>
+{% endblock %}
