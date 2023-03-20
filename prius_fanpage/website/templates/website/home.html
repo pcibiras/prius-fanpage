@@ -5,7 +5,7 @@
 
 {% block content %}
 <!--title-->
-<section id="title">
+<section id="title" xmlns="http://www.w3.org/1999/html">
     <div class="title_img_container">
         <img class="title-image" src="{% static 'website/img/title-img.jpg' %}">
         <div class="container-fluid top_left">
@@ -69,35 +69,38 @@
     <script src="{% static 'website/js/script.js' %}"></script>
 </section>
 
-
-
 <section id="poll">
     <div class="poll-container">
-
         <h2> Poll  </h2>
         {% if user.is_authenticated %}
-        {% for question in questions %}
-        <form action="{% url 'vote' question.id %}" method="post">
+        <form action="{% url 'vote' %}" method="post">
             {% csrf_token %}
             <fieldset>
-                <legend><h1>{{ question.question_text }}</h1></legend>
+                <legend> <h2> {{ question.question_text }} </h2> </legend>
                 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
                 {% for choice in question.choice_set.all %}
-                <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
+                <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{choice.id}}">
                 <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
                 {% endfor %}
             </fieldset>
             <input type="submit" value="Vote">
         </form>
-        {% endfor %}
-        {% else %}
+            {% else %}
 
-        {% for question in questions %}
-        <h3> {{ question.question_text}} </h3>
-        <p><a href="{% url 'login' %}"> Log in</a> to participate in a Poll</p>
-
-        {% endfor %}
+            <form action="{% url 'vote' %}" method="post">
+            {% csrf_token %}
+            <fieldset>
+                <legend> <h2> {{ question.question_text }} </h2> </legend>
+                {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+                {% for choice in question.choice_set.all %}
+                <input type="radio" name="choice" id="" value="{{choice.id}}">
+                <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
+                {% endfor %}
+                <p><a href="{% url 'login' %}"> Log in</a> to participate in a Poll</p>
+            </fieldset>
+        </form>
         {% endif %}
+
     </div>
 </section>
 

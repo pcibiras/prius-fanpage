@@ -5,8 +5,8 @@ from polls.models import Question, Choice
 
 
 def welcome(request):
-    questions = Question.objects.all()
-    return render(request, "website/home.html", {"questions":questions})
+    question = Question.objects.get(id=1)
+    return render(request, "website/home.html", {"question":question})
 
 @login_required(redirect_field_name='my_redirect_field')
 def jokes (request):
