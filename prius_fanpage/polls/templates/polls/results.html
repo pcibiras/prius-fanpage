@@ -16,7 +16,8 @@
         <li>{{ choice.choice_text }}</li>
         <li> {{ choice.votes }} </li>
         {% endfor %}
-
     </ul>
+
+    <p><a href="{% url 'welcome' %}">Go back</a></p>
 </div>
 {% endblock %}
