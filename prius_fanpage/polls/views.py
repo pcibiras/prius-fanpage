@@ -1,6 +1,10 @@
 from django.shortcuts import render, get_object_or_404, HttpResponseRedirect
 from .models import Question, Choice
 from django.urls import reverse
+import matplotlib.pyplot as plt
+import io
+import urllib
+import base64
 
 def vote(request):
 
@@ -20,5 +24,20 @@ def vote(request):
 
 def results(request):
     question = Question.objects.get(id=1)
-    return render(request, "polls/results.html", {"question":question})
+
+    # code for the plot
+    x = [choice.choice_text for choice in Choice.objects.all()]
+    y = [choice.votes for choice in Choice.objects.all()]
+    plt.bar(x, y, color="#850000")
+    plt.title("Votes")
+    plt.ylabel("Nr. of votes")
+    plt.xticks(rotation=15)
+    plt.tight_layout()
+    fig = plt.gcf()
+    buf = io.BytesIO()
+    fig.savefig(buf)
+    buf.seek(0)
+    string = base64.b64encode(buf.read())
+    uri = urllib.parse.quote(string)
+    return render(request, "polls/results.html", {"question":question, "data":uri})
 

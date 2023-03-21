@@ -11,13 +11,11 @@
         <h3> This is the result:</h3>
     </div>
     <p>{{ question.question_text }}</p>
-    <ul>
-        {% for choice in question.choice_set.all %}
-        <li>{{ choice.choice_text }}</li>
-        <li> {{ choice.votes }} </li>
-        {% endfor %}
-    </ul>
+
+<!--    plot should go here-->
+    <img class="plot" src="data:image/png;base64, {{ data }}" alt="" height="400" width="400">
 
     <p><a href="{% url 'welcome' %}">Go back</a></p>
+
 </div>
 {% endblock %}
