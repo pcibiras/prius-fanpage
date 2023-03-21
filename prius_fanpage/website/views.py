@@ -12,7 +12,3 @@ def welcome(request):
 def jokes (request):
     return render(request, "website/jokes.html")
 
-@login_required(redirect_field_name='my_redirect_field')
-def counter (request):
-    # code for a counter form + actual counter should go here
-    return render(request, "website/counter.html")

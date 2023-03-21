@@ -14,7 +14,7 @@ def vote(request):
     except (KeyError, Choice.DoesNotExist):     # if user has not checked a field - an exception is raised
         return render (request, 'website/home.html', {
             'question': question,
-            'error_message': "You didn't select a choice.",     # error message is displayed in the html form
+            'error_message': "You didn't select a choice.",     # error message to be displayed in the html form
         })
     else:
         selected_choice.votes += 1      # appends to 'votes' in 'choices' the db table
@@ -26,15 +26,15 @@ def results(request):
     question = Question.objects.get(id=1)
 
     # code for the plot
-    x = [choice.choice_text for choice in Choice.objects.all()]
-    y = [choice.votes for choice in Choice.objects.all()]
+    x = [choice.choice_text for choice in Choice.objects.all()]     # list comprehention to parse db data
+    y = [choice.votes for choice in Choice.objects.all()]       # list comprehention to parse db data
     plt.bar(x, y, color="#850000")
     plt.title("Votes")
     plt.ylabel("Nr. of votes")
-    plt.xticks(rotation=15)
-    plt.tight_layout()
-    fig = plt.gcf()
-    buf = io.BytesIO()
+    plt.xticks(rotation=15)     # rotates bar labels
+    plt.tight_layout()     # this function keeps the plot from being cut off
+    fig = plt.gcf()     # gcf - get current figure
+    buf = io.BytesIO()      # lines below converts the plot to a html friendly format
     fig.savefig(buf)
     buf.seek(0)
     string = base64.b64encode(buf.read())
