@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from website.views import welcome, jokes
-from counter.views import counter
+from counter.views import choose_duration
 from django.contrib.auth import views as auth_views
 
 
@@ -27,6 +27,7 @@ urlpatterns = [
     path('logout', auth_views.LogoutView.as_view(template_name='users/logout.html'), name='logout'),
     path('', welcome, name="welcome"),
     path('jokes', jokes, name="jokes"),
-    path('counter', counter, name="counter"),
+    path('', include('counter.urls')),
     path('', include('polls.urls')),
+
 ]

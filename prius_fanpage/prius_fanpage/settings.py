@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'website',
     'accounts',
     'counter',
+    'multiselectfield'
+
 ]
 
 MIDDLEWARE = [
