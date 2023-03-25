@@ -23,7 +23,17 @@ COLORS_CHOICES = (
     ('pine', ('Pine Mica')),
     ('seaside', ('Seaside Pearl')),
 )
-class Color(models.Model):
+class ColorFive(models.Model):
+    color = MultiSelectField(choices=COLORS_CHOICES,
+                             max_choices=8,
+                             default=1,
+                             validators=[
+                                 MaxValueValidator(100),
+                                 MinValueValidator(1)
+                             ]
+                             )
+
+class ColorTen(models.Model):
     color = MultiSelectField(choices=COLORS_CHOICES,
                              max_choices=8,
                              default=1,
