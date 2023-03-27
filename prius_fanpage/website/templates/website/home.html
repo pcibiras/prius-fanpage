@@ -70,13 +70,14 @@
 </section>
 
 <section id="poll">
+
     <div class="poll-container">
-        <h2> Poll  </h2>
+        <h1 class="poll-title"> Poll  </h1>
         {% if user.is_authenticated %}
         <form action="{% url 'vote' %}" method="post">
             {% csrf_token %}
             <fieldset>
-                <legend> <h2> {{ question.question_text }} </h2> </legend>
+                <legend> <h3> {{ question.question_text }} </h3> </legend>
                 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
                 {% for choice in question.choice_set.all %}
                 <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{choice.id}}">
@@ -90,7 +91,7 @@
             <form action="{% url 'vote' %}" method="post">
             {% csrf_token %}
             <fieldset>
-                <legend> <h2> {{ question.question_text }} </h2> </legend>
+                <legend> <h3> {{ question.question_text }} </h3> </legend>
                 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
                 {% for choice in question.choice_set.all %}
                 <input type="radio" name="choice" id="" value="{{choice.id}}">
@@ -108,7 +109,8 @@
     <div class="counter-promo-container">
         <h1 ><a class="counter-promo-title" href="{% url 'choose_duration' %}">Prius Counter</a></h1>
         <h3>Try out this road game</h3>
-        <h3>And find out how many can you spot on the road.</h3>
+        <h3>And find out how many Priuses can you spot on the road.</h3>
+        <img class="convertible-img" src="{%static 'website/img/convertible.png'%}">
     </div>
 </section>
 

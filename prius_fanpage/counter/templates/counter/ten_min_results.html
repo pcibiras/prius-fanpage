@@ -1,10 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'website/base.html' %}
+{% load static %}
 
-</body>
-</html>
+{% block title %}Prius Counter{% endblock %}
+
+{% block content %}
+<div class="random-container">
+    <h1>Your score is: {{ user_score }}</h1>
+    <h1>The average number of Priuses spotted in 10 minutes is: {{ average }}</h1>
+    <br>
+    <p><a href="{% url 'choose_duration' %}">Play Again?</a></p>
+    <p><a href="{% url 'welcome' %}">Home</a></p>
+</div>
+{% endblock %}

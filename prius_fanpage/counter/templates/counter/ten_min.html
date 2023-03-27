@@ -1,16 +1,54 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<form method="post">
-  <table>
-    {{ form }}
-  </table>
-  {% csrf_token %}
-  <button type="submit">Submit</button>
-</form>
-</body>
-</html>
+{% extends 'website/base.html' %}
+{% load static %}
+
+{% block title %}Prius Counter{% endblock %}
+
+{% block content %}
+<div class="random-container">
+    <h1> 10min Counter</h1>
+
+        <div id="ten-countdown"></div>
+    <script type="text/javascript">
+
+function countdown( elementName, minutes, seconds )
+{
+    var element, endTime, hours, mins, msLeft, time;
+    function twoDigits( n )
+
+    {return (n <= 9 ? "0" + n : n);}
+
+    element = document.getElementById( elementName );
+    endTime = (+new Date) + 332 * (60*minutes + seconds) + 500;
+    updateTimer();
+
+
+    function updateTimer()
+    {
+        msLeft = endTime - (+new Date);
+
+        if ( msLeft < 1000 ) {
+            element.innerHTML = "Time is up!";
+        } else {
+            time = new Date( msLeft );
+            hours = time.getUTCHours();
+            mins = time.getUTCMinutes();
+            element.innerHTML = (hours ? hours + ':' + twoDigits( mins ) : mins) + ':' + twoDigits( time.getUTCSeconds() );
+            setTimeout( updateTimer, time.getUTCMilliseconds() + 500 );
+        }
+    }
+}
+
+countdown( "ten-countdown", 30, 0 );
+
+</script>
+
+
+    <form method="POST">
+        <fieldset>
+            {% csrf_token %}
+            {{ form.as_p}}
+            <button type="submit" class="submit-button btn btn-outline-danger">Submit</button>
+        </fieldset>
+    </form>
+</div>
+{% endblock %}

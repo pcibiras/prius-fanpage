@@ -2,7 +2,6 @@ from django.db import models
 from multiselectfield import MultiSelectField
 from django.core.validators import MaxValueValidator, MinValueValidator
 
-# Create your models here.
 # class TimeChoice(models.Model):
 #     pass
     # time_choice = models.IntegerField()
@@ -11,6 +10,12 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 
     # def __str__(self):
     #     return self.title
+
+class CountFive (models.Model):
+    number = models.IntegerField()
+
+class CountTen (models.Model):
+    number = models.IntegerField()
 
 
 COLORS_CHOICES = (

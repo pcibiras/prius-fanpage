@@ -6,18 +6,23 @@
 {% block content %}
 <div class="counter-container">
     <h1 class="counter-title">Welcome to the Prius counting game.</h1>
-    <img class="convertible-img" src="{%static 'website/img/convertible.png'%}">
     <h3>Did you know?</h3>
     <ul>
         <li>1 192 000 units of the gen 2 Prius were sold worldwide.</li>
         <li>There were 7 different colors available.</li>
     </ul>
-    <p>How many can you spot on the road?</p>
     <br>
-    <p>Choose the duration of the game:</p>
-    <p>3 5 10</p>
+    <h3>How many can you spot on the road?</h3>
     <br>
-    <p>How many different colors did you manage to spot?</p>
+    <br>
+
+    <h3>Choose the duration of the game:</h3>
+    <h3><a href="{% url 'five'%}">5 min</a></h3>
+    <h3><a href="{% url 'ten'%}">10 min</a></h3>
+    <br>
+    <br>
+    <br>
+<!--    <p>How many different colors did you manage to spot?</p>-->
 
 </div>
 

@@ -116,7 +116,7 @@ padding: 70px 0 50px 30px;
 
 #timer {
 text-align: center;
-padding-bottom: 150px;
+padding-bottom: 100px;
 }
 .timer-heading {
 padding: 100px 0 0 0;
@@ -160,8 +160,7 @@ position: relative;
 }
 
 .convertible-img {
-position: absolute;
-margin: 0 0 0 50%;
+padding-top: 30px;
 }
 
 .counter-title {
@@ -169,7 +168,13 @@ padding-bottom: 50px;
 }
 
 .poll-container {
-padding: 70px 0 50px 30px;
+padding: 70px 0 100px 30px;
+}
+
+.poll-title {
+text-align: center;
+color: #850000
+
 }
 
 .result-container {
@@ -182,4 +187,12 @@ padding-bottom: 30px;
 
 .plot {
 padding-bottom: 70px;
+}
+
+.random-container {
+padding: 70px 0 50px 30px;
+}
+
+.countdown {
+color: #850000;
 }
